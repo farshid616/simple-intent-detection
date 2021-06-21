@@ -1,0 +1,14 @@
+//
+// Created by farshid on 6/21/21.
+//
+
+#ifndef SIMPLE_INTENT_DETECTION_SENTENCEPARSER_H
+#define SIMPLE_INTENT_DETECTION_SENTENCEPARSER_H
+
+
+class SentenceParser {
+
+};
+
+
+#endif //SIMPLE_INTENT_DETECTION_SENTENCEPARSER_H
