@@ -39,15 +39,18 @@ const std::vector<std::string> RulesManager::GetFactRules(const std::string& fil
 //in that file as a vector of string
 //usage: GetRules("weather_rules") <named file is beside the executable>
 const std::vector<std::string> RulesManager::GetRules(const std::string& file_address) {
-    std::fstream rules_file_;
+    std::fstream rules_file;
     std::string line;
     std::vector<std::string> rules;
-    rules_file_.open(file_address, std::ios::in | std::ios::app) ;
-    if (rules_file_.is_open()) {
-        while (std::getline(rules_file_, line))
+    rules_file.open(file_address, std::ios::in | std::ios::app) ;
+    if (rules_file.is_open()) {
+        while (std::getline(rules_file, line)) {
+            if (!line.empty() && line[line.size() - 1] == '\r')
+                line.erase(line.size() - 1);
             rules.push_back(line);
+        }
 
-        rules_file_.close();
+        rules_file.close();
     }
     return std::move(rules);
 }

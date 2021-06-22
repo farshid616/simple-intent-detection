@@ -50,5 +50,23 @@ TEST(RulesManager, GetRulesFalult) {
     ASSERT_EQ(0, RulesManager::GetFactRules("nothing").size());
 }
 
+//Test the GetIntent function for a sentence with intent of Get Weather
+TEST(SentenceParser, GetIntentWeather) {
+    ASSERT_EQ("Get Weather", SentenceParser::GetInstance()->GetIntent("How is the Weather?"));
+}
 
+//Test the GetIntent function for a sentence with intent of Get Weather City
+TEST(SentenceParser, GetIntentWeatherCity) {
+    ASSERT_EQ("Get Weather City", SentenceParser::GetInstance()->GetIntent("How is the Weather in Berlin?"));
+}
+
+//Test the GetIntent function for a sentence with intent of Get Fact
+TEST(SentenceParser, GetIntentFact) {
+    ASSERT_EQ("Get Fact", SentenceParser::GetInstance()->GetIntent("Give me a fact"));
+}
+
+//Test the GetIntent function for a sentence with unknown intent
+TEST(SentenceParser, GetIntentOther) {
+    ASSERT_EQ("Not Detected!", SentenceParser::GetInstance()->GetIntent("How do you do?"));
+}
 #endif //ASSESSMENT_TESTS_TESTS_H
