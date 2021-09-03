@@ -22,14 +22,21 @@ jobs:
           name: Install GTEST
           command: 'apt-get update && sudo apt-get install -y libgtest-dev'
       - run:
-          name: Setup cmake and build artifacts
+          name: Setup GTEST
+          command: |
+                cd /usr/src/gtest
+                sudo cmake CMakeLists.txt
+                sudo make
+                sudo cp *.a /usr/lib
+      - run:
+          name: Build Project
           command: |
             mkdir build
             cd build
             cmake ..
             make
       - run:
-          name: Execute Tests
+          name: Build and Execute Tests
           command: |
             cd assessment-tests
             mkdir build
