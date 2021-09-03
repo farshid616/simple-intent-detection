@@ -31,7 +31,7 @@ jobs:
       - run:
           name: Execute Tests
           command: |
-            cd ../assessment-tests
+            cd assessment-tests
             mkdir build
             cd build
             cmake ..
